@@ -3,3 +3,5 @@ bills/
 bills.zip
 test.ipynb
 uploads/
+.vercel
+venv/
