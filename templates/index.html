@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+    <h1>Musical Bingo: Card Generator</h1>
+
+    <form action="/generate_images" method="POST" enctype="multipart/form-data">
+        
+        
+        <div class="label-box-pair">
+        <label for="NROWS" title="Number of rows in card [Defaults to 3]">Nº Rows:</label>
+        <input type="number" id="NROWS" name="NROWS" title="Number of rows in card [Defaults to 3]">
+        </div>
+
+        <div class="label-box-pair">
+        <label for="NCOLS" title="Number of columns in card [Defaults to 10]">Nº Columns:</label>
+        <input type="number" id="NCOLS" name="NCOLS" title="Number of columns in card [Defaults to 10]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="N_PLAYERS" title="Number of bingo players [Defults to 10]">Nº Players:</label>
+        <input type="number" id="N_PLAYERS" name="N_PLAYERS" title="Number of bingo players [Defults to 10]"><br><br>
+        </div>
+
+
+        <div class="label-box-pair">
+        <label for="N_SONGS_CARD" title="Number of songs per bingo card [Defaults to 15]">Nº Songs per Card:</label>
+        <input type="number" id="N_SONGS_CARD" name="N_SONGS_CARD" title="Number of songs per bingo card [Defaults to 15]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="N_IMAGES_CARD" title="Number of images per bingo card [Defaults to 0]">Nº Images per Card:</label>
+        <input type="number" id="N_IMAGES_CARD" name="N_IMAGES_CARD" title="Number of images per bingo card [Defaults to 0]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="TIMES" title="Multiplier of width and height [Defaults to 1]">AR Multiplyer:</label>
+        <input type="number" id="TIMES" name="TIMES" title="Multiplier of width and height [Defaults to 1]"><br><br>
+        </div>
+        <div class="label-box-pair">
+        <label for="WIDTH" title="Width of bingo card (X, in pixels or aspect ratio) [Defaults to 3200]">WIDTH:</label>
+        <input type="number" id="WIDTH" name="WIDTH" title="Width of bingo card (X, in pixels or aspect ratio) [Defaults to 3200]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="HEIGHT" title="Height of bingo card (Y, in pixels or aspect ratio) [Defaults to 1400]">HEIGHT:</label>
+        <input type="number" id="HEIGHT" name="HEIGHT" title="Height of bingo card (Y, in pixels or aspect ratio) [Defaults to 1400]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="DPI" title="DPI of the saved images [Defaults to 600]">DPI:</label>
+        <input type="number" id="DPI" name="DPI" title="DPI of the saved images [Defaults to 600]"><br><br>
+        </div>
+        
+        <div class="label-box-pair">
+        <label for="BG_COLOUR" title="Background colour of the bingo card [Defaults to white]">Background Colour:</label>
+        <input type="color" id="BG_COLOUR" name="BG_COLOUR" value="#FFFFFF" title="Background colour of the bingo card [Defaults to white]"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="FILLS" title="Fill background colour or colours of the bingo card (rounded rectangles). Insert bar separated values (either word, rgb or hex).">Fill Colours:</label>
+        <input type="text" id="FILLS" name="FILLS" title="Fill background colour or colours of the bingo card (rounded rectangles). Insert bar separated values (either word, rgb or hex)."><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="EDGES" title="Edge colour or colours of the bingo card (rounded rectangles). Insert bar separated values (either word, rgb or hex). or 'same' (same as FILLS) [Defaults to 'same']">Edge Colours:</label>
+        <input type="text" id="EDGES" name="EDGES" title="Edge colour or colours of the bingo card (rounded rectangles). Insert bar separated values (either word, rgb or hex). or 'same' (same as FILLS) [Defaults to 'same']"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="TILE_FILL" title="Song tile fill colour.">Tile Fill Colour:</label>
+        <input type="color" id="TILE_FILL" name="TILE_FILL" value="#FFFFFF" title="Song tile fill colour."><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="TILE_EDGE" title="Song tile edge colour">Tile Edge Colour:</label>
+        <input type="color" id="TILE_EDGE" name="TILE_EDGE" value="#FFFFFF" title="Song tile edge colour"><br><br>
+        </div>
+
+
+        <div class="label-box-pair">
+        <label for="images">Upload Images:</label>
+        <input type="file" name="images" id="images" multiple accept=".jpg, .png, .jpeg"><br><br>
+        </div>
+
+        <div class="label-box-pair">
+        <label for="songs">Upload Songs:</label>
+        <input type="file" name="songs" id="songs" multiple accept=".txt"><br><br>
+        </div>
+
+        <button style="position: relative; left: 50%;" type="submit">Generate Images</button>
+    </form>
+    <br><br>
+
+</body>
+</html>
+
+

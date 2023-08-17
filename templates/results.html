@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Images</title>
+    <style>
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generated Images</h1>
+    {% for image in images %}
+        <div class="image-container">
+            <img src="{{ image }}" alt="Generated Image">
+        </div>
+    {% endfor %}
+    <a href="/download_images">Download All Images</a>
+</body>
+</html>
