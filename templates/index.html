@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Generator</title>
+    <title>Musical Bingo</title>
 
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link rel="icon" href="../static/img/favicon.png">
+
 </head>
 <body>
     <h1>Musical Bingo: Card Generator</h1>
+
+    <div class="image-container">
+        <a class="image-link" href="https://github.com/diegonti" target="_blank">
+          <img src="../static/img/github.png" alt="GitHub" title="GitHub">
+        </a>
+        <a class="image-link" href="info.html">
+          <img src="../static/img/info.png" alt="Info" title="Info">
+        </a>
+        <a class="image-link" href="mailto:diegonti.doc@gmail.com">
+          <img src="../static/img/mail.png" alt="Email" title="Mail">
+        </a>
+    </div>
 
     <form action="/generate_images" method="POST" enctype="multipart/form-data">
         
@@ -97,6 +111,10 @@
 
         <button style="position: relative; left: 50%;" type="submit">Generate Images</button>
     </form>
+
+    <p class="signature">
+        Made by&nbsp<a  class="signature_link" href="https://linktr.ee/diegonti" target="_blank">@diegonti</a>
+    </p>
     <br><br>
 
 </body>
