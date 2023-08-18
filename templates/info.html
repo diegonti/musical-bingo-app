@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Page</title>
+<link rel="stylesheet" href="../static/styles_info.css">
+<link rel="icon" href="../static/img/favicon.png">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="top-box">
+        <a class="image-link" href="index.html">
+            <img src="../static/img/goback.png" alt="Back" title="Back">
+        </a>
+        <h2>Musical Bingo: Information</h2>
+
+        <a class="image-link" href="mailto:diegonti.doc@gmail.com" target="_blank">
+            <img src="../static/img/mail.png" alt="Mail" title="Mail">
+        </a>
+
+        </div>
+
+        <div class="columns-container">
+        <div class="column">
+        <div class="box">
+            <h2>About</h2>
+            <p style="text-align: justify; margin-bottom: 0px;">
+            Hi, I'm Diego, a computational chemist at the University of Barcelona.
+            My friends and I like to play Musical Bingo once in a while, but making all the cards,
+            making sure the songs are well distributed, putting in all the images... is a very boring  and repetitive process.
+            And as I always say, let the machine do the machine's work!
+            <br><br>
+            That's why I developed this (simple) web app that runs a Python script in the background that generates 
+            all the cards automatically with the given user input. The web is managed with Flask and all 
+            the source code can be found in <a href="https://github.com/diegonti/musical-bingo-app">this</a> GitHub repo. 
+            <br><br>
+            At the begining, it started by being only a Python script with an input file. 
+            But I've been wanting to experiment with web development for quite some time, 
+            and I decided to take the extra step here. Plus, putting it on the web makes it easier for more people to use.
+            <br><br>
+            Feel free to use it! This is actually my first experience developing web apps, so take that in mind. For any help or questions
+            you can contact <a href="diegonti.doc@gmail.com">me</a>.
+            <br><br>
+            Note that if no songs are provided, this will act as a normal bingo card generator (with numbers).
+            And, if in the phone looks wonky, tilt it horizontally.
+            </p>
+        </div>
+        </div>
+        
+        <div class="column">
+        <div class="box">
+            <h2>How To</h2>
+            <p style="text-align: justify;">
+            To use it, put the parameters you want on the main page. To get more information about them, you can hover the box
+            and a label will appear. Not all the boxes have to be filled, when left empty, the default values will be taken.
+            <br><br>
+            In the Images box you should select the images you want (optional) and for the song box, upload a text file with the 
+            songs in "artist - song" format. You can create it by hand or easily get it from a Spotify playlist with <a href="https://www.tunemymusic.com/es/transfer">TuneMyMusic</a>.
+            <br><br>
+            Once set, click the submit button and a zip file will be generated.
+             </p>
+
+            <h4>Colours Legend</h4>
+            <p style="text-align: justify; margin-top: 0px; margin-bottom: 15px;">
+            For more clearance, below are assigned the different colour parameters, and indicated in the example bingo card.
+            The Fill colours must be entered as a bar (/) separated list of colours, if more than one is wanted. 
+            It can take either words, rgb or hex colour format. Example: (0,100,100)/#FFFFFF/blue for three consecutive fill colours.
+            The same is applied for the edges (or write same for the same as the fills).
+            </p>
+            <ul>
+            <li><b>1.</b> Background Colour</li>
+            <li><b>2.</b> Fill Colours</li>
+            <li><b>3.</b> Edge Colours</li>
+            <li><b>4.</b> Tile Fill Colour</li>
+            <li><b>5.</b> Tile Edge Colour</li>
+            </ul>
+        </div>
+        </div>
+
+        </div>
+
+
+        <div class="bottom-box">
+            <img class="example" src="../static/img/example.png" alt="Example" title="Example">
+        </div>
+
+    </div>
 </body>
 </html>
