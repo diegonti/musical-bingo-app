@@ -1,0 +1,105 @@
+body {
+  font-family: Calibri, sans-serif;
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; */
+  padding: 20px;
+}
+
+.columns-container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.top-box {
+  flex-basis: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content:space-between;
+}
+
+.image-link {
+  text-decoration: none;
+  margin: 15px;
+}
+
+.image-link img {
+  width: 50px;
+  height: auto;
+}
+
+.column {
+  flex-basis: calc(50% - 20px);
+  padding: 10px;
+}
+
+.box {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 5px;
+}
+
+.column h2 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px;
+  column-count: 2; /* Set the number of columns */
+  column-gap: 20px; /* Adjust the gap between columns */
+}
+
+li {
+  margin-bottom: 5px;
+  break-inside: avoid; /* Prevent list items from breaking across columns */
+}
+
+.bottom-box {
+  flex-basis: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.bottom-box img {
+  display: block; /* Make sure the image is treated as a block element */
+  width: 100%; /* Make the image fill the width of the container */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+@media (max-width: 600px) {
+  .columns-container {
+    flex-direction: column;
+    overflow-x: hidden;
+
+    /* width: 500px; */
+  }
+  
+
+}
