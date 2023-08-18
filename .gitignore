@@ -5,3 +5,4 @@ test.ipynb
 uploads/
 .vercel
 venv/
+vercel.json
