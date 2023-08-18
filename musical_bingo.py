@@ -425,9 +425,9 @@ def main(parameters:dict):
     songs_per_bill = generate_sublists(song_list, N_PLAYERS, N_SONGS_CARD)
     images_per_bill = generate_sublists(img_list,N_PLAYERS,N_IMAGES_CARD)
 
-    required_images = ["fran.jpg","raquel.jpg","emma.jpg"]
-    if not required_images[0].startswith(IMG_FOLDER): required_images = [IMG_FOLDER + i for i in required_images]
-    if not N_IMAGES_CARD == 0: images_per_bill = ensure_elements_present(images_per_bill, required_images)
+    # required_images = ["fran.jpg","raquel.jpg","emma.jpg"]
+    # if not required_images[0].startswith(IMG_FOLDER): required_images = [IMG_FOLDER + i for i in required_images]
+    # if not N_IMAGES_CARD == 0: images_per_bill = ensure_elements_present(images_per_bill, required_images)
 
     FILLS,EDGES = parse_fills(FILLS,EDGES)
 
