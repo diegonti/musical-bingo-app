@@ -88,7 +88,7 @@ def generate_images():
 
     shutil.rmtree(IMG_FOLDER)
     shutil.rmtree(SONGS_FOLDER)
-
+    shutil.rmtree("bills/")
 
     return send_file("bills.zip", as_attachment=True, download_name="bills.zip")
     # return render_template('result.html', images=generated_images_paths)
