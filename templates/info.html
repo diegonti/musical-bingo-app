@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="top-box">
-        <a class="image-link" href="index.html">
+        <a class="image-link" href="{{ url_for('index') }}">
             <img src="../static/img/goback.png" alt="Back" title="Back">
         </a>
         <h2>Musical Bingo: Information</h2>
@@ -33,14 +33,14 @@
             <br><br>
             That's why I developed this (simple) web app that runs a Python script in the background that generates 
             all the cards automatically with the given user input. The web is managed with Flask and all 
-            the source code can be found in <a href="https://github.com/diegonti/musical-bingo-app">this</a> GitHub repo. 
+            the source code can be found in <a href="https://github.com/diegonti/musical-bingo-app" target="_blank">this</a> GitHub repo. 
             <br><br>
             At the begining, it started by being only a Python script with an input file. 
             But I've been wanting to experiment with web development for quite some time, 
             and I decided to take the extra step here. Plus, putting it on the web makes it easier for more people to use.
             <br><br>
             Feel free to use it! This is actually my first experience developing web apps, so take that in mind. For any help or questions
-            you can contact <a href="diegonti.doc@gmail.com">me</a>.
+            you can contact <a href="mailto:diegonti.doc@gmail.com">me</a>.
             <br><br>
             Note that if no songs are provided, this will act as a normal bingo card generator (with numbers).
             And, if in the phone looks wonky, tilt it horizontally.
@@ -56,7 +56,7 @@
             and a label will appear. Not all the boxes have to be filled, when left empty, the default values will be taken.
             <br><br>
             In the Images box you should select the images you want (optional) and for the song box, upload a text file with the 
-            songs in "artist - song" format. You can create it by hand or easily get it from a Spotify playlist with <a href="https://www.tunemymusic.com/es/transfer">TuneMyMusic</a>.
+            songs in "artist - song" format. You can create it by hand or easily get it from a Spotify playlist with <a href="https://www.tunemymusic.com/es/transfer" target="_blank">TuneMyMusic</a>.
             <br><br>
             Once set, click the submit button and a zip file will be generated.
              </p>
