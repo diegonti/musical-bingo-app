@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, url_for
 import os
 import shutil
 import random
@@ -47,6 +47,10 @@ app = Flask(__name__,static_folder="./static/")
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
 
 @app.route('/generate_images', methods=['POST'])
 def generate_images():
