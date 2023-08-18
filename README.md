@@ -4,5 +4,5 @@ Web app developed with Flask based on my [musical bingo card generation repo](ht
 
 Now the user input is done throught a webpage and the Python scripts to generate the cards runs in the background
 
-Hosted on: [https://musical-bingo-doc.pyhtoneverywhere.com](https://musical-bingo-doc.pyhtoneverywhere.com)
+Hosted on: [https://musicalbingodoc.pythonanywhere.com](https://musicalbingodoc.pythonanywhere.com)
 
