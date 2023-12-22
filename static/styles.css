@@ -102,3 +102,14 @@ button[type="submit"] {
   color: grey; 
   text-decoration: none;
 }
+
+
+@media (max-width: 600px) {
+  .label-box-pair label {
+    font-size: small;
+
+    /* width: 500px; */
+  }
+  
+
+}
