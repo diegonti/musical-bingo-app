@@ -1,3 +1,14 @@
+"""
+Simple Python program to create bingo cards for Musical Bingo.
+The program works with an input file where the configuration and format of the bingo card is given.
+The program takes the given songs, images and format, and creates the specified musical bingo cards
+in an output folder, calculating the winner card.
+
+A quick way to make bingo cards for a fun night with friends and family!
+
+Diego Ontiveros - 22/12/2023
+"""
+
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import textwrap
 
@@ -10,13 +21,26 @@ import ast
 
 
 def text_to_image(image, text,rectangle_area,font_size=30):
-    """Puts the given text in a certain rectangular area of an image."""
+    """
+    Puts the given text in a certain rectangular area of an image.
+
+    Parameters
+    --------------
+    `image` : PIL image object where the cards is being drawn.\n
+    `text`  : String of text to add to the image.\n
+    `rectangle_area` : (x1,y1,x2,y2) array with the 2 corners of a rectangle.\n
+    `font_size` : Text font size. Defaults to 40.
+
+    Returns
+    -------------
+    `image` : Modified base image with the text added.
+    """
 
     # Create an ImageDraw object
     draw = ImageDraw.Draw(image)
 
     # Define the default font
-    font = ImageFont.truetype("arial.ttf", font_size)
+    font = ImageFont.truetype("arial.ttf", font_size)   ## Watch out with fonts!!!
 
     # Define the rectangle area to add text
     x1, y1, x2, y2 = rectangle_area
@@ -51,11 +75,19 @@ def text_to_image(image, text,rectangle_area,font_size=30):
 
 
 def add_corners(im, rad=100):
-    """Adds rounded corners to an image"""
-
+    """
+    Adds rounded corners to an image. Thought for user input images.
+    
+    `im`    : PIL Image object.
+    `rad`   : Rounded border radius.
+    
+    """
+    # Creates a image with a white circle
     circle = Image.new('L', (rad * 2, rad * 2), 0)
     draw = ImageDraw.Draw(circle)
     draw.ellipse((0, 0, rad * 2, rad * 2), fill=255)
+
+    # Use the circle to create an alpha mask (for the corners to desappear)
     alpha = Image.new('L', im.size, "white")
     w, h = im.size
     alpha.paste(circle.crop((0, 0, rad, rad)), (0, 0))
@@ -63,17 +95,24 @@ def add_corners(im, rad=100):
     alpha.paste(circle.crop((rad, 0, rad * 2, rad)), (w - rad, 0))
     alpha.paste(circle.crop((rad, rad, rad * 2, rad * 2)), (w - rad, h - rad))
 
+    # Use the mask to elimiate the corners, leaving them round
     alpha = ImageChops.darker(alpha, im.split()[-1])
-
     im.putalpha(alpha)
+
     return im
 
 
 def tile_to_image(image,tile_path,rectangular_area):
-    """Adds tile of bingo card to the image card."""
+    """
+    Adds user image to the bingo card image, into a specified rectangle.
+
+    `image` : PIL image object where the cards is being drawn.\n
+    `tile_path` : String containing the path of the user image.\n
+    `rectangle_area` : (x1,y1,x2,y2) array with the 2 corners of a rectangle.\n
+
+    """
 
     tile = Image.open(tile_path).convert("RGBA")
-    # tile = add_corners(tile, 500)
     rectangular_area = np.array(rectangular_area).astype(int)
 
     # Calculate the size of the rectangle area
@@ -119,6 +158,8 @@ class Rectangle:
         
 
 class Grid:
+    """Class representing the grid of the bingo card."""
+
     def __init__(self,image,metadata,NROWS,NCOLS) -> None:
         self.image = image
         self.metatada = metadata
@@ -265,6 +306,7 @@ def generate_sublists(big_list, N, M):
 
     # Create a list to store the sublists
     sublists = []
+    big_list = big_list.copy()
 
     # Shuffle the big list to randomize the order of elements
     random.shuffle(big_list)
@@ -338,6 +380,15 @@ def read_input(input_file):
 
     return parameters
 
+def expand_img_list(img_list, n_images_card):
+    """Repeate some images if not enough present. Warns if executed."""
+
+    if len(img_list) < n_images_card:
+        print("Warning! The number of images given is less than the number of images selected per card. Some will be repeated.")
+        for _ in range(n_images_card-len(img_list)):
+            img_list.append(img_list[0])
+    
+    return img_list
 
 def parse_fills(FILLS,EDGES):
     FILLS = FILLS.split("/")
@@ -375,6 +426,28 @@ def ensure_elements_present(bills, required_elements):
                         break
         bills[i] = input_list
     return bills
+
+def get_winner(song_list,songs_per_bill,OUTPUT_FOLDER):
+    print("\n")
+    for i,song in enumerate(song_list):
+        for j,card in enumerate(songs_per_bill):
+            if song in card:
+                songs_per_bill[j].remove(song)
+
+        lens = [len(card) for card in songs_per_bill]
+        if 0 in lens:
+            print(lens)
+            winner = lens.index(0)
+            iteration = i
+            win_song = song
+            break
+
+    print(f"Winner = bill{winner} at song {iteration} ({win_song})")
+    print(lens.count(0),lens.count(1))
+    with open(f"{OUTPUT_FOLDER}/winner.txt","w") as outFile:
+        outFile.write(f"Winner = bill{winner} at song {iteration} ({win_song})")
+
+    return winner,iteration,win_song,lens
 
 
 ########################################################################################################
@@ -420,12 +493,13 @@ def main(parameters:dict):
     ####################   PARSING INPUT and PREPARATION   ####################
 
     img_list = [IMG_FOLDER + img for img in os.listdir(IMG_FOLDER)]
+    img_list = expand_img_list(img_list,N_IMAGES_CARD)
     song_list = read_song_fie(SONGS_FILE)
 
     songs_per_bill = generate_sublists(song_list, N_PLAYERS, N_SONGS_CARD)
     images_per_bill = generate_sublists(img_list,N_PLAYERS,N_IMAGES_CARD)
 
-    # required_images = ["fran.jpg","raquel.jpg","emma.jpg"]
+    # required_images = ["test1.jpg","test2.jpg","test3.jpg"]
     # if not required_images[0].startswith(IMG_FOLDER): required_images = [IMG_FOLDER + i for i in required_images]
     # if not N_IMAGES_CARD == 0: images_per_bill = ensure_elements_present(images_per_bill, required_images)
 
@@ -454,6 +528,8 @@ def main(parameters:dict):
         image.save(f"{OUTPUT_FOLDER}/bill{i}.png",dpi=(DPI,DPI))
 
         print(i+1,flush=True, end=" ")
+
+    get_winner(song_list,songs_per_bill,OUTPUT_FOLDER)
 
 
 
